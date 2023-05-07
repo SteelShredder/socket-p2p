@@ -18,12 +18,17 @@ def read(conn, mask):
         print('echoing', repr(data), 'to', conn)
         conn.send(data)  # Hope it won't block
     else:
+        # if the client is closed, close the connection
         print('closing', conn)
         sel.unregister(conn)
         conn.close()
 
+# creates socket object
 sock = socket.socket()
+
+# binds with the host and the port number
 sock.bind((HOST, 2222))
+
 sock.listen(100)
 sock.setblocking(False)
 sel.register(sock, selectors.EVENT_READ, accept)
