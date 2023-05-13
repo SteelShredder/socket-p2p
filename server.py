@@ -2,7 +2,7 @@ import selectors
 import socket
 #Sample code adapted from Python docs
 
-HOST = 'localhost'
+HOST = socket.gethostname()
 PORT = 2222
 sel = selectors.DefaultSelector()
 
@@ -27,7 +27,7 @@ sock.bind((HOST, 2222))
 sock.listen(100)
 sock.setblocking(False)
 sel.register(sock, selectors.EVENT_READ, accept)
-
+print(host)
 while True:
     events = sel.select()
     for key, mask in events:

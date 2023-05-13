@@ -1,6 +1,6 @@
 import socket
 
-HOST = 'localhost'
+HOST = input("IP: ")
 PORT = 2222 
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
